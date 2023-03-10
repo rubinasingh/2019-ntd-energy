@@ -11,6 +11,14 @@ st.set_page_config(
 st.title("Welcome to our CET 522 Project")
 st.sidebar.success("Select a page above.")
 
+PAES = {
+    "Home": "Home.py",
+    "Dataset": "2_🔎_Dataset.py",
+    "Features": "3_📊_Features.py",
+    "Maps": "4_📍_Maps.py"
+
+}
+
 # header = st.container()
 # dataset = st.container()
 # features = st.container()
