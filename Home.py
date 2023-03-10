@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 from streamlit_option_menu import option_menu
+import openpyxl
 
 st.set_page_config(
     page_title = "Welcome to U.S. Transit Fleets Energy Status"
