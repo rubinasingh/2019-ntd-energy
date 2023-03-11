@@ -12,53 +12,6 @@ st.set_page_config(
 st.title("Welcome to our CET 522 Project")
 st.sidebar.success("Select a page above.")
 
-PAES = {
-    "Home": "Home.py",
-    "Dataset": "2_🔎_Dataset.py",
-    "Features": "3_📊_Features.py",
-    "Maps": "4_📍_Maps.py"
-
-}
-
-# header = st.container()
-# dataset = st.container()
-# features = st.container()
-# map = st.container()
-# # model = st.container()
-
-# with st.sidebar:
-#     selected = option_menu(
-#         menu_title = "Navigate",
-#         options = ["Home", "Dataset", "Features", "Maps", "Contact"],
-#         icons = ["🏠", "🔎", "📊", "📍", "📞"]
-
-#         # if selected == "Home"
-#         #     st.write("Home")
-#         # if selected == "Dataset"
-#         #     st.write("Dataset")
-#         # if selected == "Features"
-#         #     st.write("Features")
-#         # if selected == "Map"
-#         #     st.write("Map")
-#         # if selected == "Model"
-#         #     st.write("Model")
-#         # if selected == "Contact"
-#         #     st.write("Contact")
-#     )
-
-# Customize
-# st.markdown(
-#     """
-#     <style>
-#      .main {
-#      background-color: #F5F5DC;
-
-#      }
-
-#     </style>
-#     """,
-#     unsafe_allow_html=True
-# )
 
 # Code we want to only run once
 @st.cache_data
