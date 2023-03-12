@@ -14,12 +14,14 @@ st.sidebar.success("Select a page above.")
 
 
 # Code we want to only run once
-@st.cache_data
+# @st.cache_data
+@st.experimental_memo  # replacement for @st.cache_data
 def get_data(filename):
     ntd_data = pd.read_excel(filename, sheet_name = 'Agency Totals')
     return ntd_data
 
-@st.cache_data
+# @st.cache_data
+@st.experimental_memo  # replacement for @st.cache_data
 def get_city_data(filename):
     city_data = pd.read_excel(filename)
     return city_data
