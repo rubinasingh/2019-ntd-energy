@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
+import plotly.express as px
 
 def get_data(filename):
     ntd_data = pd.read_excel(filename, sheet_name = 'Agency Totals')
@@ -23,8 +24,10 @@ state_dist = pd.DataFrame(ntd_data['State'].value_counts())
 st.bar_chart(state_dist)
 
 st.subheader('Distribution of Agency Types')
-agency_type_dist = pd.DataFrame(ntd_data['Organization Type'].value_counts())
-st.bar_chart(agency_type_dist)
+agency_type_dist = pd.DataFrame({'Organization Type': ntd_data['Organization Type'].value_counts().index.tolist(),
+                                'Count': ntd_data['Organization Type'].value_counts()})
+agency_type_dist_fig = px.bar(agency_type_dist, x='Count',y='Organization Type', orientation='h')
+st.write(agency_type_dist_fig)
 
 ntd_data['Diesel'] = ntd_data['Diesel'] * 1.155
 ntd_data['Bio-Diesel'] = ntd_data['Bio-Diesel'] * 0.09 # assuming B20 fuel is used
@@ -68,6 +71,16 @@ fuel_count_state = pd.Series([state_data['Diesel'].sum(),
                                       'Electric Battery'])
 st.bar_chart(fuel_count_state)
 
+st.subheader('Electric Battery Usage by Agency (Top 10). Units in kWh.')
+cond = ntd_data['Electric Battery'] > 0
+agencies_elec_batt = ntd_data[cond][['Agency', 'Electric Battery']]
+
+agencies_elec_batt_top = agencies_elec_batt.nlargest(10, 'Electric Battery')
+
+agencies_elec_batt_top_fig =px.bar(agencies_elec_batt_top, x='Electric Battery', y='Agency', orientation='h')
+st.write(agencies_elec_batt_top_fig)
+
+# st.bar_chart(agencies_elec_batt_top, x='Agency', y='Electric Battery')
 
 
 # fuel_sum_list = [ntd_data['Diesel'].sum(),
