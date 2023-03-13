@@ -5,11 +5,15 @@ import numpy as np
 
 st.title('Dataset 🔎')
 
+st.image('Data/CET 522 Project ER Diagram.png', caption='E/R Diagram for NTD data table and U.S. Cities data table.'
+                                                        ' Attributes are simplified for readability purposes.')
+
 def get_data(filename):
     ntd_data = pd.read_excel(filename, sheet_name = 'Agency Totals')
     return ntd_data
 
-@st.cache_data
+# @st.cache_data
+@st.experimental_memo  # replacement for @st.cache_data
 def get_city_data(filename):
     city_data = pd.read_excel(filename)
     return city_data
