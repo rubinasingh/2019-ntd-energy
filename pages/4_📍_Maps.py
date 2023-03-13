@@ -16,6 +16,10 @@ city_data = get_city_data('Data/uscities.xlsx')
 city_data = city_data.rename(columns = {'city': 'City', 'lat': 'latitude', 'lng': 'longitude'})
 merged_data = pd.merge(ntd_data, city_data, on="City")
 
+merged_data['Diesel'] = merged_data['Diesel'] * 1.155
+merged_data['Bio-Diesel'] = merged_data['Bio-Diesel'] * 0.09 # assuming B20 fuel is used
+merged_data['Electric Propulsion'] = merged_data['Electric Propulsion'] * 0.031
+merged_data['Electric Battery'] = merged_data['Electric Battery'] * 0.031
 
 st.header('Maps 📍')
 st.header('Cities included in the National Transit Datset')
