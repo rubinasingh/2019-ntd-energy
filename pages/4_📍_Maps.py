@@ -34,7 +34,7 @@ st.subheader('Cities where fleet fuel source is primarily electric')
 merged_data['Electric > Others'] = (merged_data['Electric Propulsion'] > merged_data[['Diesel', 'Gasoline', 'Compressed Natural Gas', 'Bio-Diesel']].sum(axis=1)) | (merged_data['Electric Battery'] > merged_data[['Diesel', 'Gasoline', 'Compressed Natural Gas', 'Bio-Diesel']].sum(axis=1))
 
 # Filter the DataFrame to only include rows where 'Electric > Others' is True
-filtered_data = data.loc[data['Electric > Others'] == True]
+filtered_data = merged_data.loc[merged_data['Electric > Others'] == True]
 
 # Use st.map() to map the filtered DataFrame
 st.map(filtered_data)
